@@ -13,6 +13,9 @@ jobs:
     - name: brew repo
       run: |
         brew tap chiyang10000/homebrew-tap
+        cd `brew --repository`/Library/Taps/chiyang10000/homebrew-tap
+        git fetch origin refs/heads/${GITHUB_REF##*/}:refs/remotes/origin/${GITHUB_REF##*/}
+        git checkout origin/${GITHUB_REF##*/}
         brew search chiyang10000
 
     - name: install
